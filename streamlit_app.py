@@ -408,16 +408,16 @@ def main():
         # Results section
         st.header("📊 PCA Results")
         
-        # Explained variance
-        st.subheader("Explained Variance Analysis")
-        
+        # Create columns with titles at the same level
         col1, col2 = st.columns([1, 1])
+        
         with col1:
+            st.subheader("Explained Variance Analysis")
             fig_variance = create_explained_variance_plot(pca)
             st.plotly_chart(fig_variance, use_container_width=True)
         
         with col2:
-            st.write("**Explained Variance Ratios:**")
+            st.subheader("Explained Variance Ratios")
             
             # Create a fixed-height container for the variance ratios
             variance_container = st.container()
