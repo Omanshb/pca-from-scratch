@@ -220,7 +220,7 @@ def create_explained_variance_plot(pca):
     fig.update_yaxes(title_text="Cumulative Explained Variance Ratio", row=1, col=2)
     
     fig.update_layout(
-        height=400
+        height=320
     )
     
     return fig
@@ -426,6 +426,10 @@ def main():
                 
                 cumulative = pca.get_cumulative_variance_ratio()
                 st.write(f"\n**Cumulative Variance (first {n_components} components):** {cumulative[-1]:.4f} ({cumulative[-1]*100:.2f}%)")
+                
+                # Add some spacing to balance with the graph height
+                st.write("")
+                st.write("")
         
         # Add explanations in separate row to ensure alignment
         col1_info, col2_info = st.columns([1, 1])
