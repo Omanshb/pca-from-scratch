@@ -1,6 +1,6 @@
 # Principal Component Analysis (PCA) from Scratch
 
-_A complete mathematical guide with from-scratch implementation_
+https://pcafromscratch.streamlit.app/
 
 ## 🎓 Introduction: What is PCA?
 
