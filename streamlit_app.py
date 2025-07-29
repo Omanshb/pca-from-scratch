@@ -220,8 +220,7 @@ def create_explained_variance_plot(pca):
     fig.update_yaxes(title_text="Cumulative Explained Variance Ratio", row=1, col=2)
     
     fig.update_layout(
-        height=400,
-        title_text="PCA Explained Variance Analysis"
+        height=400
     )
     
     return fig
@@ -412,7 +411,7 @@ def main():
         col1, col2 = st.columns([1, 1])
         
         with col1:
-            st.subheader("Explained Variance Analysis")
+            st.subheader("Explained Variance Graphs")
             fig_variance = create_explained_variance_plot(pca)
             st.plotly_chart(fig_variance, use_container_width=True)
         
