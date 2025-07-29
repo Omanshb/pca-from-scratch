@@ -417,7 +417,7 @@ def main():
             st.plotly_chart(fig_variance, use_container_width=True)
         
         with col2:
-            st.subheader("Explained Variance Ratios")
+            st.write("**Explained Variance Ratios:**")
             
             # Create a fixed-height container for the variance ratios
             variance_container = st.container()
