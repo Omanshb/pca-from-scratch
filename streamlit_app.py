@@ -415,6 +415,22 @@ def main():
         with col1:
             fig_variance = create_explained_variance_plot(pca)
             st.plotly_chart(fig_variance, use_container_width=True)
+        
+        with col2:
+            st.subheader("Explained Variance Ratios")
+            
+            # Create a fixed-height container for the variance ratios
+            variance_container = st.container()
+            with variance_container:
+                for i, ratio in enumerate(pca.explained_variance_ratio_):
+                    st.write(f"PC{i+1}: {ratio:.4f} ({ratio*100:.2f}%)")
+                
+                cumulative = pca.get_cumulative_variance_ratio()
+                st.write(f"\n**Cumulative Variance (first {n_components} components):** {cumulative[-1]:.4f} ({cumulative[-1]*100:.2f}%)")
+        
+        # Add explanations in separate row to ensure alignment
+        col1_info, col2_info = st.columns([1, 1])
+        with col1_info:
             st.info("""
             **Scree Plot Explanation:**
             - **Left plot**: Shows how much variance each PC explains individually
@@ -423,14 +439,7 @@ def main():
             - **95% rule**: Keep enough PCs to capture 95% of total variance
             """)
         
-        with col2:
-            st.write("**Explained Variance Ratios:**")
-            for i, ratio in enumerate(pca.explained_variance_ratio_):
-                st.write(f"PC{i+1}: {ratio:.4f} ({ratio*100:.2f}%)")
-            
-            cumulative = pca.get_cumulative_variance_ratio()
-            st.write(f"\n**Cumulative Variance (first {n_components} components):** {cumulative[-1]:.4f} ({cumulative[-1]*100:.2f}%)")
-            
+        with col2_info:
             st.info("""
             **Interpretation Guide:**
             - Each PC captures a portion of the data's variance
